@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siska — Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="player">
+    <div class="topline"><span class="dot"></span> NOW PLAYING</div>
+    <div class="cover">
+      <div class="cover-inner">
+        <span class="small">A SONG FOR YOU</span>
+        <h1>Siska</h1>
+        <p>MASDO</p>
+        <div class="vinyl"><div></div></div>
+      </div>
+    </div>
+
+    <section class="track">
+      <div>
+        <h2>Siska</h2>
+        <p class="artist">MASDO</p>
+      </div>
+      <span class="heart">♡</span>
+    </section>
+
+    <audio id="audio" preload="metadata" src="Siska.mp3"></audio>
+    <div class="progress-area">
+      <input id="seek" type="range" min="0" max="100" value="0">
+      <div class="times"><span id="current">0:00</span><span id="duration">0:00</span></div>
+    </div>
+
+    <div class="controls">
+      <button id="back" title="Mundur 10 detik">↶</button>
+      <button id="play" class="play" title="Play">▶</button>
+      <button id="forward" title="Maju 10 detik">↷</button>
+    </div>
+
+    <div class="volume">
+      <span>VOL</span>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8">
+    </div>
+
+    <section class="lyrics">
+      <div class="lyrics-heading">
+        <span>LYRICS</span><span class="live">● SYNC MODE</span>
+      </div>
+      <div id="lyric-lines">
+        <p class="active">Tambahkan lirik milikmu di script.js</p>
+        <p>Baris berikutnya akan tampil di sini</p>
+        <p>Putar lagu untuk melihat sinkronisasi</p>
+      </div>
+      <p class="hint">Isi teks dan waktu lirik pada bagian <b>LYRICS</b> di script.js.</p>
+    </section>
+    <footer>PERSONAL MUSIC PLAYER · MADE WITH CODE</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
