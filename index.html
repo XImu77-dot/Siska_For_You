@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siska — Music Player</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <main class="player">
+  <main class="player" id="player">
     <div class="topline"><span class="dot"></span> NOW PLAYING</div>
-    <div class="cover">
-      <div class="cover-inner">
-        <span class="small">A SONG FOR YOU</span>
-        <h1>Siska</h1>
-        <p>By-Suka Sama Suka</p>
-        <div class="vinyl"><div></div></div>
-      </div>
+
+    <!-- Foto 1:1 -->
+    <div class="cover" id="cover">
+      <img id="coverImg" src="Siska.jpg.jpeg" alt="Siska" onerror="this.parentElement.classList.add('empty')">
+      <input id="photoInput" type="file" accept="image/*" hidden>
     </div>
 
     <section class="track">
-      <div>
-        <h2>Siska</h2>
-        <p class="artist">ForYou</p>
+      <div class="titles">
+        <h1>Siska</h1>
+        <p class="artist">By-Yang Suka Sama Kamu</p>
       </div>
-      <span class="heart">♡</span>
     </section>
 
     <audio id="audio" preload="metadata" src="Siska.mp3"></audio>
@@ -48,14 +47,12 @@
         <span>LYRICS</span><span class="live">● SYNC MODE</span>
       </div>
       <div id="lyric-lines">
-        <p class="active">Tambahkan lirik milikmu di script.js</p>
-        <p>Baris berikutnya akan tampil di sini</p>
-        <p>Putar lagu untuk melihat sinkronisasi</p>
+        <p class="active">Putar lagu untuk melihat lirik</p>
       </div>
-      <p class="hint">Isi teks dan waktu lirik pada bagian <b>LYRICS</b> di script.js.</p>
     </section>
     <footer>PERSONAL MUSIC PLAYER · MADE WITH CODE</footer>
   </main>
   <script src="script.js"></script>
 </body>
+
 </html>
