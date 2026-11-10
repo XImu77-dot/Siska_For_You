@@ -1,36 +1,230 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap');
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 20% 10%,#563b48,#17151b 48%,#0c0d12);color:#f8f2ed;font-family:'DM Sans',sans-serif}
-.player{width:min(100%,430px);padding:25px;border:1px solid #ffffff20;border-radius:28px;background:#211f25eF;box-shadow:0 25px 90px #0009}
-.topline{font-size:10px;letter-spacing:3px;color:#c8b7ac;text-align:center;margin-bottom:20px}
-.dot{display:inline-block;width:7px;height:7px;background:#d69a79;border-radius:50%;margin-right:8px;box-shadow:0 0 12px #d69a79}
-.cover{height:300px;border-radius:19px;overflow:hidden;background:linear-gradient(145deg,#b77b68,#573f48 55%,#25212a);display:grid;place-items:center;position:relative}
-.cover:before,.cover:after{content:"";position:absolute;border:1px solid #ffffff25;border-radius:50%;width:270px;height:270px}
-.cover:after{width:220px;height:220px}
-.cover-inner{text-align:center;z-index:1}
-.small{font-size:9px;letter-spacing:4px;color:#f3d8c9}
-.cover h1{font:700 52px 'Playfair Display',serif;margin:10px 0 0}
-.cover-inner>p{letter-spacing:5px;font-size:11px;margin:2px 0 20px}
-.vinyl{width:105px;height:105px;margin:auto;border-radius:50%;background:repeating-radial-gradient(circle,#17151a 0 3px,#29252c 4px 6px);display:grid;place-items:center;box-shadow:0 8px 25px #0007}
-.vinyl div{width:25px;height:25px;background:#c78d73;border-radius:50%;border:5px solid #29252c}
-.track{display:flex;justify-content:space-between;align-items:center;margin:23px 2px 14px}
-.track h2{font:600 23px 'Playfair Display',serif;margin:0}
-.artist{margin:4px 0 0;color:#b9a9a1;font-size:13px}
-.heart{font-size:27px;color:#d79c7d}
-input[type=range]{width:100%;accent-color:#d69a79;cursor:pointer}
-.progress-area{margin-top:10px}
-.times{display:flex;justify-content:space-between;color:#a99c98;font-size:10px;margin-top:4px}
-.controls{display:flex;justify-content:center;align-items:center;gap:27px;margin:18px 0}
-button{border:0;background:transparent;color:#f7eee9;font-size:25px;cursor:pointer}
-button.play{width:58px;height:58px;border-radius:50%;background:#d69a79;color:#21191a;font-size:21px;padding-left:5px;box-shadow:0 5px 22px #d69a7940}
-.volume{display:flex;align-items:center;gap:12px;color:#b9aaa3;font-size:9px;letter-spacing:2px;margin:0 3px 23px}
-.volume input{max-width:110px}
-.lyrics{border-top:1px solid #ffffff18;padding-top:18px;text-align:center}
-.lyrics-heading{display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;color:#cbbab1;margin-bottom:15px}
-.live{color:#d69a79}
-#lyric-lines{min-height:112px;display:flex;flex-direction:column;justify-content:center;gap:9px}
-#lyric-lines p{margin:0;color:#8e8280;font-size:13px;transition:.25s}
-#lyric-lines p.active{font:600 19px 'Playfair Display',serif;color:#f7e6dc;transform:scale(1.03)}
-.hint{font-size:10px;color:#857a78;line-height:1.5;margin:14px 0 0}
-footer{text-align:center;color:#71696b;font-size:8px;letter-spacing:2px;margin-top:22px}
-@media(max-width:420px){.player{padding:18px}.cover{height:260px}}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: radial-gradient(circle at 20% 10%, #563b48, #17151b 48%, #0c0d12);
+    color: #f8f2ed;
+    font-family: 'DM Sans', sans-serif
+}
+
+.player {
+    width: min(100%, 430px);
+    padding: 25px;
+    border: 1px solid #ffffff20;
+    border-radius: 28px;
+    background: #211f25eF;
+    box-shadow: 0 25px 90px #0009
+}
+
+.topline {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #c8b7ac;
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #d69a79;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 12px #d69a79
+}
+
+/* ===== Foto 1:1 ===== */
+.cover {
+    margin-top: 16px;
+    position: relative;
+    border-radius: 19px;
+    overflow: hidden;
+    background: #17151a;
+    aspect-ratio: 1/1;
+    line-height: 0
+}
+
+.cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center 65%
+}
+
+.cover.empty {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #b77b68, #573f48 55%, #25212a)
+}
+
+.cover.empty img {
+    display: none
+}
+
+.track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 18px 2px 12px
+}
+
+input[type=range] {
+    width: 100%;
+    accent-color: #d69a79;
+    cursor: pointer
+}
+
+.progress-area {
+    margin-top: 10px
+}
+
+.times {
+    display: flex;
+    justify-content: space-between;
+    color: #a99c98;
+    font-size: 10px;
+    margin-top: 4px
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 27px;
+    margin: 18px 0
+}
+
+button {
+    border: 0;
+    background: transparent;
+    color: #f7eee9;
+    font-size: 25px;
+    cursor: pointer
+}
+
+button.play {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #d69a79;
+    color: #21191a;
+    font-size: 21px;
+    padding-left: 5px;
+    box-shadow: 0 5px 22px #d69a7940
+}
+
+.volume {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #b9aaa3;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin: 0 3px 23px
+}
+
+.volume input {
+    max-width: 110px
+}
+
+.lyrics {
+    border-top: 1px solid #ffffff18;
+    padding-top: 18px;
+    text-align: center
+}
+
+.lyrics-heading {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #cbbab1;
+    margin-bottom: 15px
+}
+
+.live {
+    color: #d69a79
+}
+
+#lyric-lines {
+    min-height: 112px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 9px
+}
+
+#lyric-lines p {
+    margin: 0;
+    color: #8e8280;
+    font-size: 13px;
+    transition: .25s
+}
+
+#lyric-lines p.active {
+    font: 600 19px 'Playfair Display', serif;
+    color: #f7e6dc;
+    transform: scale(1.03)
+}
+
+.hint {
+    font-size: 10px;
+    color: #857a78;
+    line-height: 1.5;
+    margin: 14px 0 0
+}
+
+footer {
+    text-align: center;
+    color: #71696b;
+    font-size: 8px;
+    letter-spacing: 2px;
+    margin-top: 22px
+}
+
+.photo-btn {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 2;
+    font: 500 11px 'DM Sans', sans-serif;
+    letter-spacing: 1px;
+    color: #f7eee9;
+    background: #17151acc;
+    border: 1px solid #ffffff30;
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer
+}
+
+.photo-btn:hover {
+    background: #17151a
+}
+
+/* ===== Tulisan di bawah foto ===== */
+.titles {
+    min-width: 0
+}
+
+.track h1 {
+    font: 700 40px/1.05 'Playfair Display', serif;
+    margin: 0
+}
+
+.artist {
+    margin: 6px 0 0;
+    color: #b9a9a1;
+    font-size: 12px;
+    letter-spacing: 3px
+}
