@@ -6,7 +6,6 @@ const current = document.getElementById("current");
 const duration = document.getElementById("duration");
 const lyricContainer = document.getElementById("lyric-lines");
 
-// Sinkronisasi lirik sesuai tempo lagu Siska.mp3
 const LYRICS = [
   { time: 16, text: 'Apa kabar Siska?' },
   { time: 20, text: 'Lama tak jumpa' },
@@ -48,7 +47,7 @@ function formatTime(seconds) {
   return `${mins}:${secs}`;
 }
 let currentLyricIndex = -1;
-// Semua baris dibuat sekali, lalu track digeser agar baris aktif selalu di tengah
+
 const lyricTrack = document.createElement("div");
 lyricTrack.className = "lyric-track";
 lyricContainer.innerHTML = "";
@@ -103,3 +102,28 @@ document.getElementById("forward").addEventListener("click", () => {
 });
 audio.volume = 0.8;
 renderLyrics(-1);
+
+const themeToggle = document.getElementById("themeToggle");
+if (themeToggle) {
+  const savedTheme = localStorage.getItem("siska-player-theme");
+  if (savedTheme === "dark-pink") {
+    document.body.setAttribute("data-theme", "dark-pink");
+    themeToggle.textContent = "🌸";
+    themeToggle.title = "Ganti ke Soft Pink";
+  }
+
+  themeToggle.addEventListener("click", () => {
+    const isDark = document.body.getAttribute("data-theme") === "dark-pink";
+    if (isDark) {
+      document.body.removeAttribute("data-theme");
+      themeToggle.textContent = "💖";
+      themeToggle.title = "Ganti ke Dark Pink";
+      localStorage.setItem("siska-player-theme", "soft-pink");
+    } else {
+      document.body.setAttribute("data-theme", "dark-pink");
+      themeToggle.textContent = "🌸";
+      themeToggle.title = "Ganti ke Soft Pink";
+      localStorage.setItem("siska-player-theme", "dark-pink");
+    }
+  });
+}
