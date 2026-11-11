@@ -9,7 +9,6 @@
 </head>
 
 <body>
-  <!-- Latar belakang bergerak (kanan ke kiri, loop) -->
   <div class="bg" aria-hidden="true">
     <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
     <span class="orb o4"></span><span class="orb o5"></span>
@@ -23,9 +22,9 @@
   </div>
 
   <main class="player" id="player">
+    <button id="themeToggle" class="theme-toggle" title="Ganti Mode Pink (Dark / Soft)" aria-label="Ganti mode warna pink">💖</button>
     <div class="topline"><span class="dot"></span> NOW PLAYING</div>
 
-    <!-- Foto 1:1 -->
     <div class="cover" id="cover">
       <img id="coverImg" src="Siska.jpg.jpeg" alt="Siska" onerror="this.parentElement.classList.add('empty')">
       <input id="photoInput" type="file" accept="image/*" hidden>
