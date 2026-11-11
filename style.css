@@ -5,7 +5,7 @@
 }
 
 :root {
-  
+    /* Soft Dreamy Pink (Default Theme) */
     --pink-bg-1: #ffe8ef;
     --pink-bg-2: #ffbdd1;
     --pink-bg-3: #ffa2bc;
@@ -41,6 +41,7 @@
     --orb-color-2: rgba(255, 182, 193, 0);
 }
 
+/* Dark Romantic Velvet Pink Theme */
 body[data-theme="dark-pink"] {
     --pink-bg-1: #4d102b;
     --pink-bg-2: #290817;
@@ -146,6 +147,7 @@ body {
     box-shadow: 0 0 12px var(--accent);
 }
 
+/* ===== Foto 1:1 ===== */
 .cover {
     margin-top: 16px;
     position: relative;
@@ -287,6 +289,7 @@ button.play:hover {
     mask-image: linear-gradient(transparent, #000 28%, #000 72%, transparent);
 }
 
+/* Semua baris ada di sini, lalu digeser naik/turun seperti Spotify */
 .lyric-track {
     position: relative;
     transition: transform .65s cubic-bezier(.22, 1, .36, 1);
@@ -363,6 +366,7 @@ footer {
     transform: scale(1.04);
 }
 
+/* ===== Tulisan di bawah foto ===== */
 .titles {
     min-width: 0;
 }
@@ -383,6 +387,7 @@ footer {
     transition: color 0.4s ease;
 }
 
+/* ===== Latar belakang bergerak: kanan ke kiri, loop ===== */
 .bg {
     position: fixed;
     inset: 0;
@@ -391,6 +396,7 @@ footer {
     pointer-events: none;
 }
 
+/* Teks besar berjalan (marquee) */
 .bg-row {
     position: absolute;
     left: 0;
@@ -431,6 +437,7 @@ footer {
     }
 }
 
+/* Bola cahaya melayang */
 .orb {
     position: absolute;
     left: 100%;
