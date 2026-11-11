@@ -6,6 +6,7 @@ const current = document.getElementById("current");
 const duration = document.getElementById("duration");
 const lyricContainer = document.getElementById("lyric-lines");
 
+// Sinkronisasi lirik sesuai tempo lagu Siska.mp3
 const LYRICS = [
   { time: 16, text: 'Apa kabar Siska?' },
   { time: 20, text: 'Lama tak jumpa' },
@@ -47,7 +48,7 @@ function formatTime(seconds) {
   return `${mins}:${secs}`;
 }
 let currentLyricIndex = -1;
-
+// Semua baris dibuat sekali, lalu track digeser agar baris aktif selalu di tengah
 const lyricTrack = document.createElement("div");
 lyricTrack.className = "lyric-track";
 lyricContainer.innerHTML = "";
@@ -103,6 +104,7 @@ document.getElementById("forward").addEventListener("click", () => {
 audio.volume = 0.8;
 renderLyrics(-1);
 
+// Pengaturan Mode Warna Pink (Soft Pink / Dark Velvet Pink)
 const themeToggle = document.getElementById("themeToggle");
 if (themeToggle) {
   const savedTheme = localStorage.getItem("siska-player-theme");
