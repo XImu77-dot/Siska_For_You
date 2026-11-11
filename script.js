@@ -48,17 +48,27 @@ function formatTime(seconds) {
   return `${mins}:${secs}`;
 }
 let currentLyricIndex = -1;
+// Semua baris dibuat sekali, lalu track digeser agar baris aktif selalu di tengah
+const lyricTrack = document.createElement("div");
+lyricTrack.className = "lyric-track";
+lyricContainer.innerHTML = "";
+lyricContainer.appendChild(lyricTrack);
+const lyricEls = LYRICS.map((line) => {
+  const p = document.createElement("p");
+  p.textContent = line.text;
+  p.addEventListener("click", () => { audio.currentTime = line.time + 0.01; });
+  lyricTrack.appendChild(p);
+  return p;
+});
+
 function renderLyrics(activeIndex) {
-  const start = Math.max(0, activeIndex - 1);
-  const visible = LYRICS.slice(start, start + 3);
-  lyricContainer.innerHTML = "";
-  visible.forEach((line, index) => {
-    const p = document.createElement("p");
-    p.textContent = line.text;
-    if (activeIndex >= 0 && start + index === activeIndex) p.classList.add("active");
-    lyricContainer.appendChild(p);
-  });
+  lyricEls.forEach((p, i) => p.classList.toggle("active", i === activeIndex));
+  const target = lyricEls[Math.max(activeIndex, 0)];
+  const offset = lyricContainer.clientHeight / 2 - (target.offsetTop + target.offsetHeight / 2);
+  lyricTrack.style.transform = `translateY(${offset}px)`;
 }
+window.addEventListener("resize", () => renderLyrics(currentLyricIndex));
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => renderLyrics(currentLyricIndex));
 function updateLyrics() {
   let index = -1;
   for (let i = 0; i < LYRICS.length; i++) {
